@@ -140,6 +140,7 @@ func emitError(err error) {
 }
 
 func emitResp(resp *pluginpb.CodeGeneratorResponse) {
+	resp.SupportedFeatures = proto.Uint64(uint64(pluginpb.CodeGeneratorResponse_FEATURE_PROTO3_OPTIONAL))
 	buf, err := proto.Marshal(resp)
 	if err != nil {
 		glog.Fatal(err)
